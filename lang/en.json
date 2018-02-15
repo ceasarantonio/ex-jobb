@@ -1,0 +1,9 @@
+{
+    "BUTTONS": {
+        "NEXT": "Next",
+        "BACK": "Back",
+        "SUBMIT": "Submit",
+        "ADD": "Add",
+        "DELETE": "Delete"
+    }
+}
