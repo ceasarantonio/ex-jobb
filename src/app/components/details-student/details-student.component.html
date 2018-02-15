@@ -1,0 +1,39 @@
+<mat-card>
+    <div class="student" *ngIf="student">
+      <mat-card>
+          <span class="code__property">
+            Student:
+          </span>
+          <span class="code__value">
+            {{ student.firstName }} {{ student.lastName }}
+          </span>
+          <span class="code__property">
+            Email:
+          </span>
+          <span class="code__value">
+            {{ student.email }}
+          </span>
+          <span class="code__property">
+            Phone:
+          </span>
+          <span class="code__value">
+            {{ student.phone }}
+          </span>
+          <span class="code__property">
+            School:
+          </span>
+          <span class="code__value">
+            {{ student.school }}
+          </span>
+          <span class="code__property">
+            Education:
+          </span>
+          <span class="code__value">
+            {{ student.education }}
+          </span>
+      </mat-card>
+    </div>
+</mat-card>
+<mat-card>
+  <button mat-raised-button routerLink="/students" >Back</button>
+</mat-card>

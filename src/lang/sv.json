@@ -1,0 +1,9 @@
+{
+    "BUTTONS": {
+        "NEXT": "Nästa",
+        "BACK": "Tillbaka",
+        "SUBMIT": "Lämna in",
+        "ADD": "Lägg till",
+        "DELETE": "Ta bort"
+    }
+}

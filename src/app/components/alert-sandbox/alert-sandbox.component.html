@@ -1,0 +1,137 @@
+<h1>
+    Alert sandbox
+</h1>
+<mat-card>
+    <form novalidate #myForm="ngForm" (submit)="onSubmit($event, myForm)" class="form">
+        <div class="form__flex-box">
+            <div class="form__flex-box--radio">
+                <label>Show overlay?</label>
+                <mat-radio-group [(ngModel)]="alertOptions.overlay" name="overlay">
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="true" [checked]> yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+            <div class="form__flex-box--radio">
+                <label>Close on overlay click?</label>
+                <mat-radio-group [(ngModel)]="alertOptions.overlayClickToClose" name="overlayClickToClose">
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="true" [checked]> yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+            <div class="form__flex-box--radio">
+                <label>Show close button?</label>
+                <mat-radio-group [(ngModel)]="alertOptions.showCloseButton" name="showCloseButton">
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="true" [checked]> yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="form__flex-box">
+            <div class="form__flex-box--option">
+                <label>Animation Type :</label>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="type" name="type" ngDefaultControl>
+                        <mat-option value="warning">Warning</mat-option>
+                        <mat-option value="success">Success</mat-option>
+                        <mat-option value="error">Error</mat-option>
+                        <mat-option value="info">Info</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+			<div class="form__flex-box--option">
+				<label>Message:</label>
+				<mat-form-field>
+					<input matInput placeholder="Write a message" [(ngModel)]="message" name="message" #messageInput="ngModel" required>
+					<mat-error *ngIf="!messageInput.valid && (messageInput.dirty || messageInput.touched)">
+						Need to write a message
+					</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="form__flex-box--option">
+                <label>Time Out :</label>
+                <mat-form-field>
+                    <input matInput min="1" pattern="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$" [(ngModel)]="alertOptions.duration" name="duration"
+                        #durationInput="ngModel" required>
+                    <mat-error *ngIf="!durationInput.valid && (durationInput.dirty || durationInput.touched)">
+                        Need to set a number above 0
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form__section form__section--full">
+            <button mat-raised-button color="primary" type="submit" value="Create Notification" [disabled]="!myForm.form.valid">Create Alert Notification</button>
+		</div>
+			<div class="form__section form__section--full code">
+				<h2>Alert notification</h2>
+				<p class="code__property">this._notificationsService.success(</p>
+				<p class="code__property">{{ '{' }}</p>
+				<ul class="form__list">
+					<li class="form__list-item">
+						<span class="code__property">
+							overlay:
+						</span>
+						<span class="code__value">
+							{{ this.alertOptions.overlay }}
+						</span>,
+					</li>
+					<li class="form__list-item">
+						<span class="code__property">
+								overlayClickToClose:
+						</span>
+						<span class="code__value">
+							{{ this.alertOptions.overlayClickToClose }}
+						</span>,
+					</li>
+					<li class="form__list-item">
+						<span class="code__property">
+								showCloseButton:
+						</span>
+						<span class="code__value">
+							{{ this.alertOptions.showCloseButton }}
+						</span>,
+					</li>
+					<li class="form__list-item">
+						<span class="code__property">
+								duration:
+						</span>
+						<span class="code__value">
+							{{ this.alertOptions.duration }}
+						</span>,
+					</li>
+					<li class="form__list-item">
+						<span class="code__property">
+								type:
+						</span>
+						<span class="code__value">
+							{{ this.type }}
+						</span>,
+					</li>
+					<li class="form__list-item">
+						<span class="code__property">
+								message:
+						</span>
+						<span class="code__value">
+							{{ this.message }}
+						</span>,
+					</li>
+				</ul>
+				<p>{{ '}' }})</p>
+			</div>
+    </form>
+</mat-card>
+<mat-card>
+	<h2>Further info</h2>
+	If you want additional information, refer to the<a class="code__value" href="https://jaspero.co/resources/projects/ng-alerts"> jaspero alert notification docs</a>.
+</mat-card>

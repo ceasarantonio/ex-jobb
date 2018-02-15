@@ -1,0 +1,24 @@
+.ratio{
+    width: 50%;
+    margin: auto;
+    padding: 4px;
+    &__item{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    &__wrapper{
+        height: 0;
+        border-radius: 50%;
+        padding-top: 100%;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+}

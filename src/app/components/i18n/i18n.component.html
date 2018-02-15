@@ -1,0 +1,56 @@
+
+<h2>Test for changing language on the buttons</h2>
+<mat-card>
+    <div class="form__section form__section--full code">
+        <button mat-raised-button>{{ 'BUTTONS.NEXT' | translate }}</button>
+        <button mat-raised-button>{{ 'BUTTONS.BACK' | translate }}</button>
+        <button mat-raised-button>{{ 'BUTTONS.SUBMIT' | translate }}</button>
+        <button mat-raised-button>{{ 'BUTTONS.ADD' | translate }}</button>
+        <button mat-raised-button>{{ 'BUTTONS.DELETE' | translate }}</button>
+    </div>
+    <div class="form__section form__section--full code">
+        <button mat-icon-button class="flag" (click)="switchLanguage('sv')"><img class="flag" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPMAAACYCAMAAAAGGy+UAAAANlBMVEUAaqf+zABAj70/gn1/m1O+synA2un/5oD+2UBvno1wq87Q5O+epz7OuR/f4LSftH7u45rOxl8te/xvAAABGklEQVR4nO3Zx3HEUAxEQYorxzUy+SerDHiZXzVbQr8EBn3GdtuXdbycdqxbirpu79uyLufmy7qlqJ05i5mZuRpzGDMzczXmMGZm5mrMYczMzNWYw5iZmasxhzEzM1djDmNmZq7GHMbMzFyNOYyZmbkacxgzM3M15jBmZuZqzGHMT2z+el3W/dx8X7cU9b19nB/6D/tkHhHzjJhnxDwj5hkxz4h5RswzYp4R84yYZ8Q8I+YZMc9opvnnbVmP863HuqWo35E/d+YoZmbmasxhzMzM1ZjDmJmZqzGHMTMzV2MOY2ZmrsYcxszMXI05jJmZuRpzGDMzczXmMGZm5mrMYczMzNWYw5iZmasxhzE/sfm2L+s4Nx/rlqKuf6V9Phzi2xvrAAAAAElFTkSuQmCC"></button>
+        <button mat-icon-button class="flag" (click)="switchLanguage('en')"><img class="flag" src="data:image/jpeg;base64,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"/></button>
+    </div>
+</mat-card>
+
+
+
+<mat-card>
+        <div class="form__section form__section--full code">
+            <h2>Third party - import in to app.module.ts</h2>
+                <ul class="form__list">    
+                    <li class="form__list-item">
+                       <span>import {{ '{' }} TranslateModule, TranslateLoader {{ '}' }} from '@ngx-translate/core';</span>
+                    </li>
+                    <li class="form__list-item">
+                        <span>import {{ '{' }} TranslateHttpLoader {{ '}' }} from '@ngx-translate/http-loader';</span>
+                    </li>
+                </ul>
+        </div>
+        <div class="form__section form__section--full code">
+            <h2>Import in to your module</h2>
+            <ul class="form__list">
+                <li class="form__list-item">
+                    <span>
+                            constructor( public translate: TranslateService ) {{ '{' }}
+                            'translate.setDefaultLang('en');
+                    </span>
+                    <p>{{ '}' }}</p>        
+                </li>
+                <h2>To change lang used with a button</h2>
+                <li class="form__list-item">
+                    <span>
+                            switchLanguage(language: string) {{ '{' }}
+                                this.translate.use(language);
+                    </span>
+                    <p>{{ '}' }}</p>
+                </li>
+            </ul>
+        </div>
+</mat-card>
+<mat-card>
+        <h2>Further info</h2>
+        If you want additional information, refer to the<a class="code__value" href="https://github.com/ngx-translate/core"> ngx-translate docs</a>.
+</mat-card>
+

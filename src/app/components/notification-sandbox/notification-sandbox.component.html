@@ -1,0 +1,225 @@
+<h1>
+    Notifications sandbox
+</h1>
+<mat-card>
+    <form novalidate #myForm="ngForm" (submit)="onSubmit(myForm)" class="form">
+        <div class="form__flex-box">
+            <div class="form__flex-box--radio">
+                <label>Pause on Hover?</label>
+                <mat-radio-group [(ngModel)]="pauseOnHover" name="pauseOnHover">
+                    <div class="form__flex-box">
+                        <mat-radio-button  [value]="true" [checked]> yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button  [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+            <div class="form__flex-box--radio">
+                <label>Show progress bar?</label>
+                <mat-radio-group [(ngModel)]="progressBar" name="progressBar">
+                    <div class="form__flex-box">
+                        <mat-radio-button   [value]="true" [checked]> yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button   [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+            <div class="form__flex-box--radio">
+                <label>Click to close?</label>
+                <mat-radio-group [(ngModel)]="clickToClose" name="clickToClose">
+                    <div class="form__flex-box">
+                        <mat-radio-button class="radio-button" [value]="true" [checked]="true">yes</mat-radio-button>
+                    </div>
+                    <div class="form__flex-box">
+                        <mat-radio-button class="radio-button" [value]="false"> no</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="form__flex-box">
+            <div class="form__flex-box--option">
+                <label>Type :</label>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="type" name="type" ngDefaultControl>
+                        <mat-option value="alert">alert</mat-option>
+                        <mat-option value="error">error</mat-option>
+                        <mat-option value="info">info</mat-option>
+                        <mat-option value="warn">warn</mat-option>
+                        <mat-option value="success">success</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form__flex-box--option">
+                <label>Animation Type :</label>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="animationType" name="animationType" ngDefaultControl>
+                        <mat-option value="fromRight">fromRight</mat-option>
+                        <mat-option value="fromLeft">FromLeft</mat-option>
+                        <mat-option value="scale">scale</mat-option>
+                        <mat-option value="rotate">rotate</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form__flex-box--option">
+                <label>Title :</label>
+                <mat-form-field>
+                    <input matInput placeholder="Write a title" [(ngModel)]="title" name="title" #titleInput="ngModel" required>
+                    <mat-error *ngIf="!titleInput.valid && (titleInput.dirty || titleInput.touched)">
+                        Need to fill in a Title
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form__section">
+            <div class="form__flex-box--option">
+                <label>Content:</label>
+                <mat-form-field>
+                    <input matInput placeholder="Write some content" [(ngModel)]="content" name="content" #contentInput="ngModel" required>
+                    <mat-error *ngIf="!contentInput.valid && (contentInput.dirty || contentInput.touched)">
+                        Need to write some content
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form__flex-box--option">
+                <label>Time Out :</label>
+                <mat-form-field>
+                    <input matInput min="1" pattern="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$" [(ngModel)]="number" name="number" #numberInput="ngModel" required>
+                    <mat-error *ngIf="!numberInput.valid && (numberInput.dirty || numberInput.touched)">
+                        Need to set a number above 0
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form__section form__section--full">
+            <button mat-raised-button color="primary" type="submit" value="Create Notification" [disabled]="!myForm.form.valid">Create Notification</button>
+        </div>
+        <div class="form__section form__section--full code">
+            <h2>Third party - import in to app.module.ts</h2>
+                <ul class="form__list">    
+                    <li class="form__list-item">
+                       <span>import {{ '{' }} SimpleNotificationsModule {{ '}' }} from 'angular2-notifications';</span>
+                    </li> 
+                </ul>
+        </div>
+        <div class="form__section code">
+            <h2>Global settings</h2>
+            <p>
+                <span class="code__property">
+                public options: any = 
+                {{ '{' }}
+                </span>
+                  <span class="code__property">
+                  position:
+                  </span>
+                  <span class="code__value">
+                  ['bottom', 'right']
+                  </span>,
+                  <span class="code__property">
+                  lastOnBottom:
+                  </span>
+                  <span class="code__value">
+                  true
+                  </span>,
+                  <span class="code__property">
+                  maxLength:
+                  </span>
+                  <span class="code__value">
+                  100
+                  </span>,
+                  <span class="code__property">
+                  maxStack:
+                  </span> 
+                  <span class="code__value">
+                  4
+                  </span>,
+                  <span class="code__property">
+                  preventDuplicates:
+                  </span>
+                  <span class="code__value"> 
+                  true
+                  </span>,
+                  <span class="code__property">
+                  {{ '}' }};
+                </span>
+            </p>
+        </div>
+        <div class="form__section form__section--full code">
+            <h2>Notification</h2>
+            <p class="code__property">this._notificationsService.success(</p>
+            <p class="code__property">{{ '{' }}</p>
+            <ul class="form__list">
+                <li class="form__list-item">
+                    <span class="code__property">
+                        pauseOnHover:
+                    </span>
+                    <span class="code__value">
+                        {{ pauseOnHover }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        showProgressBar:
+                    </span>
+                    <span class="code__value">
+                        {{ progressBar }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        clickToClose:
+                    </span>
+                    <span class="code__value">
+                        {{ clickToClose }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        type:
+                    </span>
+                    <span class="code__value">
+                        {{ type }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        animationType:
+                    </span>
+                    <span class="code__value">
+                        {{ animationType }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        title:
+                    </span>
+                    <span class="code__value">
+                        {{ title || '" "' }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        content:
+                    </span>
+                    <span class="code__value">
+                        {{ content || '" "' }}
+                    </span>,
+                </li>
+                <li class="form__list-item">
+                    <span class="code__property">
+                        timeOut:
+                    </span>
+                    <span class="code__value">
+                        {{ number }}
+                    </span>,
+                </li>
+            </ul>
+            <p>{{ '}' }})</p>
+        </div>
+    </form>
+</mat-card>
+<mat-card>
+    <h2>Further info</h2>
+    If you want additional information, refer to the<a class="code__value" href="https://jaspero.co/resources/projects/ng-notifications"> jaspero notification docs</a>.
+</mat-card>

@@ -1,0 +1,68 @@
+<mat-card>
+  <form novalidate #myForm="ngForm" (submit)="onSubmit(myForm)" class="form">
+    <div class="form__flex-box">
+    <div class="form__flex-box--option">
+    <label>First name</label>
+    <mat-form-field>
+        <input matInput placeholder="First name" [(ngModel)]="firstName" name="firstName" #firstNameInput="ngModel" required>
+        <mat-error *ngIf="!firstNameInput.valid && (firstNameInput.dirty || firstNameInput.touched)">
+            Need to fill in a First name
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div class="form__flex-box--option">
+    <label>Last name</label>
+    <mat-form-field>
+        <input matInput placeholder="Last name" [(ngModel)]="lastName" name="lastName" #lastNameInput="ngModel" required>
+        <mat-error *ngIf="!lastNameInput.valid && (lastNameInput.dirty || lastNameInput.touched)">
+            Need to fill in a Last name
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div class="form__flex-box--option">
+    <label>Email</label>
+    <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" #emailInput="ngModel" required>
+        <mat-error *ngIf="!emailInput.valid && (emailInput.dirty || emailInput.touched)">
+            Need to fill in a email
+        </mat-error>
+    </mat-form-field>
+    </div>
+    </div>
+    <div class="form__flex-box">
+    <div class="form__flex-box--option">
+    <label>Phone</label>
+    <mat-form-field>
+        <input matInput placeholder="Phone" [(ngModel)]="phone" name="phone" #phoneInput="ngModel" required>
+        <mat-error *ngIf="!phoneInput.valid && (phoneInput.dirty || phoneInput.touched)">
+            Need to fill in a Phonenumber
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div class="form__flex-box--option">
+    <label>School</label>
+    <mat-form-field>
+        <input matInput placeholder="School" [(ngModel)]="school" name="school" #schoolInput="ngModel" required>
+        <mat-error *ngIf="!schoolInput.valid && (schoolInput.dirty || schoolInput.touched)">
+            Need to fill in a School
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div class="form__flex-box--option">
+    <label>Education</label>
+    <mat-form-field>
+        <input matInput placeholder="Education" [(ngModel)]="education" name="education" #educationInput="ngModel" required>
+        <mat-error *ngIf="!educationInput.valid && (educationInput.dirty || educationInput.touched)">
+            Need to fill in a Education
+        </mat-error>
+    </mat-form-field>
+    </div>
+  </div>
+  <div class="form__section form__section--full">
+      <button mat-raised-button color="primary" type="submit" value="Student" [disabled]="!myForm.form.valid">Create Student</button>
+  </div>
+  </form>
+</mat-card>
+<mat-card>
+    <button mat-raised-button routerLink="/students" >Back</button>
+</mat-card>

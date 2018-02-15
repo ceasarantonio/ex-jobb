@@ -1,0 +1,26 @@
+<mat-card>
+	<div *ngFor="let  student of students" class="student">
+		<mat-card>
+				<span class="code__property">
+					Student:
+				</span>
+				<span class="code__value">
+					{{ student.firstName }} {{ student.lastName }}
+				</span>
+				<span class="code__property">
+					Email:
+				</span>
+				<span class="code__value">
+					{{ student.email }}
+				</span>
+				<div class="student">
+					<button mat-raised-button routerLink="{{ '/student/' + student.key}}">Details</button>
+				</div>
+		</mat-card>
+	</div>
+</mat-card>
+<mat-card>
+	<div class="student">
+	<button mat-raised-button routerLink="/create-student">Add Student</button>
+	</div>
+</mat-card>

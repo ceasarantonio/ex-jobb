@@ -1,0 +1,22 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+         <app-menu-info (logout)="sidenav.close()"></app-menu-info>
+        <mat-nav-list>
+            <a mat-list-item (click)="sidenav.close()" routerLink="/">Home</a>
+            <a mat-list-item (click)="sidenav.close()" routerLink="/i18n">i18n exempel</a>
+            <a mat-list-item (click)="sidenav.close()" routerLink="/notification">Notifications sandbox</a>
+            <a mat-list-item (click)="sidenav.close()" routerLink="/alert">Alert sandbox</a>
+            <a mat-list-item (click)="sidenav.close()" routerLink="/students">Students exempel</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar>
+        <button *ngIf="authService.isAuthenticated() | async" type="button" mat-button (click)="sidenav.toggle()">
+            Open sidenav
+        </button>
+        <span>Boilerplate for singel-page applications</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <simple-notifications [options]="notifictionsOptions"></simple-notifications>
+    <jaspero-alerts></jaspero-alerts>
+</mat-sidenav-container>
+

@@ -1,0 +1,26 @@
+<h2>Login</h2>
+<mat-card>
+    <form novalidate #myForm="ngForm" (submit)="onSubmit()" class="form">
+        <div class="form__flex-box--option">
+            <label>Email:</label>
+            <mat-form-field>
+                <input matInput  [(ngModel)]="email" name="email" #emailInput="ngModel" required>
+                <mat-error *ngIf="!emailInput.valid && (emailInput.dirty || emailInput.touched)"> 
+                Need to fill in a vaild email-address
+                </mat-error> 
+            </mat-form-field>
+        </div>
+        <div class="form__flex-box--option">
+            <label>Password:</label>
+            <mat-form-field>
+                <input matInput type="password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required>
+                <mat-error *ngIf="!passwordInput.valid && (passwordInput.dirty || passwordInput.touched)"> 
+                Need to fill in a password
+                </mat-error> 
+            </mat-form-field>
+        </div>
+        <div class="form__section form__section--full">
+            <button mat-raised-button color="primary" type="submit"  [disabled]="!myForm.form.valid">Login</button>
+		</div>
+    </form>
+</mat-card>

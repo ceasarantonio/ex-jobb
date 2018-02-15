@@ -1,0 +1,13 @@
+<mat-card>
+  <span *ngIf="userEmail.length > 0">
+    {{ userEmail }}
+  </span>
+  <div class="ratio">
+    <div class="ratio__wrapper">
+      <img class="ratio__item" alt="" src="assets/img/userimage.jpg">
+    </div>
+  </div>
+  <div class="ratio">
+    <a mat-raised-button color="primary" routerLink="/login" (click)="onLogoutClick()">Logout</a>
+  </div>
+</mat-card>
